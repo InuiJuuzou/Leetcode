@@ -59,7 +59,9 @@ public:
 
         return answ;
     }
-    
+  
+  //решение с подсказкой  
+  //https://github.com/doocs/leetcode/blob/main/solution/3400-3499/3412.Find%20Mirror%20Score%20of%20a%20String/README_EN.md
     long long calculateScore(string s)
     {
         long long answer = 0;
@@ -87,29 +89,6 @@ public:
         }
 
         return answer;
-    }
-
-//списанное решение(не мое)
-    long long calculateScore1(string s) {
-        unordered_map<char, vector<int>> d;
-        int n = s.length();
-        long long ans = 0;
-        for (int i = 0; i < n; ++i) {
-            char x = s[i];
-            char y = 'a' + 'z' - x;
-            if (d.count(y)) {
-                vector<int>& ls = d[y];
-                int j = ls.back();
-                ls.pop_back();
-                if (ls.empty()) {
-                    d.erase(y);
-                }
-                ans += i - j;
-            } else {
-                d[x].push_back(i);
-            }
-        }
-        return ans;
     }
 };
 
